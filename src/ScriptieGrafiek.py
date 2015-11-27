@@ -1,3 +1,12 @@
+import math
+import matplotlib.pyplot as plt
+
+def isprime(n):
+    for i in range(2,math.ceil(math.sqrt(n))+1):
+        if n%i==0:
+            return False
+    return True
+
 def modinv(n,m):
     """Finds an x with nx + my = 1 (the inverse of n mod m), assuming that ggd(n,m)=1"""
     x_prev = 1
@@ -61,3 +70,33 @@ def orde(a,f):
         c*=a
         count+=1
     return count
+
+def graph(points,Xscale=1000,logaritmic=False):
+    fig=plt.figure()
+    plot=fig.add_subplot(111)
+    x=[]
+    y=[]
+    prime=[]
+
+    for i in range(2,points):
+        try:
+            sol=smallest_solution_Pell(i)
+            x.append(sol[0])
+            y.append(sol[1])
+        except:
+            x.append(0)
+            y.append(0)    
+        if isprime(i):
+            prime.append(1)
+        else:
+            prime.append(0)
+    for (xc,yc,n,p) in zip(x,y,range(2,points), prime):
+        try:
+            plot.scatter(xc,yc,s=10,color=(n/points,0,p))
+        except:
+            'do nothing'
+    if logaritmic:
+        plot.set_yscale('log')
+        plot.set_xscale('log')
+    plt.axis([1, 10*Xscale, 1, Xscale])
+    plt.show()   

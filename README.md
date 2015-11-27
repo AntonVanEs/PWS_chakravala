@@ -10,6 +10,15 @@ Example usage:
 >>> 35**2 - 34*6**2
 1
 ```
+# Plot the solutions
+enables you to easily make a scatter plot of the solutions, using the MatPlotLib module. Type 
+```python
+>>>plot(100) 
+```
+to plot the smallest solutions of the first 100 values of d.
+Optional arguments are: Xscale (integer, default 1000) that determains the size of the plot, and logaritmic (boolean, default False) that determains whether the axes are logarithmic or not.
+
+
 
 # $Z[\sqrt{d}]$
 Given a,b,d and f, represents the number $a+b\sqrt{d}$ with coefficients a,b in $Z/fZ$ (a,b in Z if f isn't given).
